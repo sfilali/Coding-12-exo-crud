@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Intro;
+use App\Services;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,8 @@ Route::get('/', function () {
 });
 Route::get('/', function () {
     $intros = Intro::all();
-    return view('index', compact('intros'));
+    $services = Services::all();
+    return view('index', compact('intros', 'services'));
 });
 
 /* USER */
@@ -32,7 +34,12 @@ Route::get('/about/edit', 'IntroController@edit')->name('about.edit');
 Route::post('/about/create', 'IntroController@create');
 
 /* SERVICES EDIT */
-Route::get('/services', 'ServicesController@edit');
+Route::get('/services', 'ServicesController@show')->name('services');
+Route::get('/services/{id}/edit', 'ServicesController@edit');
+Route::post('/services/{id}/update', 'ServicesController@update');
+Route::get('/services/create', 'ServicesController@create');
+Route::post('/services/store', 'ServicesController@store');
+Route::get('/services/{id}/destroy', 'ServicesController@destroy');
 
 
 /* PORTFOLIO EDIT */
