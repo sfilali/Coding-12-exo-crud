@@ -19,10 +19,10 @@ class IntroController extends Controller
 
 
     public function create(){
-        // $intro = new Intro();
-        // $intro -> img = 'img/about-img.jpg';
+        $intro = new Intro();
+        $intro -> img = 'img/about-img.jpg';
 
-        // $intro->save();
+        $intro->save();
 
         return redirect()->route('about.edit');
     }
