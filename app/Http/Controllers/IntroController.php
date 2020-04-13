@@ -7,21 +7,23 @@ use App\Intro;
 
 class IntroController extends Controller
 {
+    // public function show(){
+    //     $intros = Intro::all();
+    //     return view('index', compact('intros'));
+    // }
+
     public function show(){
         $intros = Intro::all();
-        return view('index', compact('intros'));
+        return view('Intro.edit', compact('intros'));
     }
 
-    public function edit() {
-        return view('Intro.edit');
-    }
 
     public function create(){
-        $intro = new Intro();
-        $intro -> img = 'img/about-img.jpg';
+        // $intro = new Intro();
+        // $intro -> img = 'img/about-img.jpg';
 
-        $intro->save();
+        // $intro->save();
 
-        return redirect()->route('user');
+        return redirect()->route('about.edit');
     }
 }

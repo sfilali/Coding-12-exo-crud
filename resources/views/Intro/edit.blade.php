@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/app.css">
+    <!-- Place your favicon.ico and apple-touch-icon.png in the template root directory -->
+    <link href="favicon.ico" rel="shortcut icon">
+    <link href="/img/favicon.ico" rel="shortcut icon">
     <title>About</title>
 </head>
 <body>
@@ -48,10 +51,9 @@
                     <img src="img/about-img.jpg" class="img-fluid" alt="">
                 </div>
                 <div class="col-5">
-                    @if ($intros)
-                        
+                    @if (count($intros) === 0)
+                        <button type="submit" class="btn btn-success">Ajouter</button>
                     @endif
-                    <button type="submit" class="btn btn-success">Ajouter</button>
                 </div>
             </div>
         </form>

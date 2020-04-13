@@ -11,9 +11,9 @@ class IntroSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('intros')->insert([
-            'img' => 'img/about-img.jpg',
-            "created_at" => now(),
-        ]);
+        // DB::table('intros')->insert([
+        //     'img' => 'img/about-img.jpg',
+        //     "created_at" => now(),
+        // ]);
     }
 }
