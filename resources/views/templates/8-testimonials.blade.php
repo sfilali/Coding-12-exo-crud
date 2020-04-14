@@ -11,35 +11,38 @@ Testimonials Section
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-3">
-            <div class="profile">
-                <div class="pic"><img src="img/client-1.jpg" alt=""></div>
-                <h4>Saul Goodman</h4>
-                <span>Lawless Inc</span>
-            </div>
-            </div>
-            <div class="col-md-9">
-            <div class="quote">
-                <b><img src="img/quote_sign_left.png" alt=""></b> Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper. <small><img src="img/quote_sign_right.png" alt=""></small>
-            </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-9">
-            <div class="quote">
-                <b><img src="img/quote_sign_left.png" alt=""></b> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis architecto beatae. <small><img src="img/quote_sign_right.png" alt=""></small>
-            </div>
-            </div>
-            <div class="col-md-3">
-            <div class="profile">
-                <div class="pic"><img src="img/client-2.jpg" alt=""></div>
-                <h4>Sara Wilsson</h4>
-                <span>Odeo Inc</span>
-            </div>
-            </div>
-        </div>
-
+        @foreach ($testimonials as $testimonial)
+            @if (($testimonial->id % 2) === 1 )
+                <div class="row">
+                    <div class="col-md-3">
+                    <div class="profile">
+                        <div class="pic"><img src="{{$testimonial->picture}}" alt=""></div>
+                        <h4>{{$testimonial->name}}</h4>
+                        <span>{{$testimonial->inc}}</span>
+                    </div>
+                    </div>
+                    <div class="col-md-9">
+                    <div class="quote">
+                        <b><img src="img/quote_sign_left.png" alt=""></b> {{$testimonial->quote}} <small><img src="img/quote_sign_right.png" alt=""></small>
+                    </div>
+                    </div>
+                </div>
+            @else
+                <div class="row">
+                    <div class="col-md-9">
+                    <div class="quote">
+                        <b><img src="img/quote_sign_left.png" alt=""></b> {{$testimonial->quote}} <small><img src="img/quote_sign_right.png" alt=""></small>
+                    </div>
+                    </div>
+                    <div class="col-md-3">
+                    <div class="profile">
+                        <div class="pic"><img src="{{$testimonial->picture}}" alt=""></div>
+                        <h4>{{$testimonial->name}}</h4>
+                        <span>{{$testimonial->inc}}</span>
+                    </div>
+                    </div>
+                </div>
+            @endif
+        @endforeach
     </div>
 </section>

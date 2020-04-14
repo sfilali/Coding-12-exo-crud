@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Intro;
 use App\Services;
 use App\Portfolio;
+use App\Testimonials;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,8 @@ Route::get('/', function () {
     $intros = Intro::all();
     $services = Services::all();
     $portfolios = Portfolio::all();
-    return view('index', compact('intros', 'services', 'portfolios'));
+    $testimonials = Testimonials::all();
+    return view('index', compact('intros', 'services', 'portfolios', 'testimonials'));
 });
 
 /* USER */
@@ -53,7 +55,12 @@ Route::post('/portfolio/store', 'PortfolioController@store');
 Route::get('/portfolio/{id}/destroy', 'PortfolioController@destroy');
 
 /* TESTIMONIALS EDIT */
-Route::get('/testimonials', 'TestimonialsController@edit');
+Route::get('/testimonials', 'TestimonialsController@show')->name('testimonials');
+Route::get('/testimonials/{id}/edit', 'TestimonialsController@edit');
+Route::post('/testimonials/{id}/update', 'TestimonialsController@update');
+Route::get('/testimonials/create', 'TestimonialsController@create');
+Route::post('/testimonials/store', 'TestimonialsController@store');
+Route::get('/testimonials/{id}/destroy', 'TestimonialsController@destroy');
 
 /* TEAM EDIT */
 Route::get('/team', 'TeamController@edit');
