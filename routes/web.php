@@ -5,6 +5,7 @@ use App\Intro;
 use App\Services;
 use App\Portfolio;
 use App\Testimonials;
+use App\Team;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,8 @@ Route::get('/', function () {
     $services = Services::all();
     $portfolios = Portfolio::all();
     $testimonials = Testimonials::all();
-    return view('index', compact('intros', 'services', 'portfolios', 'testimonials'));
+    $teams = Team::all();
+    return view('index', compact('intros', 'services', 'portfolios', 'testimonials', 'teams'));
 });
 
 /* USER */
@@ -63,7 +65,12 @@ Route::post('/testimonials/store', 'TestimonialsController@store');
 Route::get('/testimonials/{id}/destroy', 'TestimonialsController@destroy');
 
 /* TEAM EDIT */
-Route::get('/team', 'TeamController@edit');
+Route::get('/team', 'TeamController@show')->name('team');
+Route::get('/team/{id}/edit', 'TeamController@edit');
+Route::post('/team/{id}/update', 'TeamController@update');
+Route::get('/team/create', 'TeamController@create');
+Route::post('/team/store', 'TeamController@store');
+Route::get('/team/{id}/destroy', 'TeamController@destroy');
 
 /* CONTACT EDIT */
 Route::get('/contact', 'ContactController@edit');
