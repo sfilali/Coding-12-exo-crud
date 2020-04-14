@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Intro;
 use App\Services;
+use App\Portfolio;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,8 @@ Route::get('/', function () {
 Route::get('/', function () {
     $intros = Intro::all();
     $services = Services::all();
-    return view('index', compact('intros', 'services'));
+    $portfolios = Portfolio::all();
+    return view('index', compact('intros', 'services', 'portfolios'));
 });
 
 /* USER */
@@ -43,7 +45,12 @@ Route::get('/services/{id}/destroy', 'ServicesController@destroy');
 
 
 /* PORTFOLIO EDIT */
-Route::get('/portfolio', 'PortfolioController@edit');
+Route::get('/portfolio', 'PortfolioController@show')->name('portfolio');
+Route::get('/portfolio/{id}/edit', 'PortfolioController@edit');
+Route::post('/portfolio/{id}/update', 'PortfolioController@update');
+Route::get('/portfolio/create', 'PortfolioController@create');
+Route::post('/portfolio/store', 'PortfolioController@store');
+Route::get('/portfolio/{id}/destroy', 'PortfolioController@destroy');
 
 /* TESTIMONIALS EDIT */
 Route::get('/testimonials', 'TestimonialsController@edit');
